@@ -12,12 +12,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Trippet Login',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: KakaoLogin(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Trippet Home',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('로그인 성공 페이지'),
+        ),
+        body: Center(
+          child: Text('로그인 성공'),
+        ),
+      ),
     );
   }
 }
@@ -51,11 +68,11 @@ class _KakaoLoginState extends State<KakaoLogin> {
       AccessTokenStore.instance.toStore(token);
       print("token = " + token.toString());
 
-      /*
+
       Navigator.push(context, MaterialPageRoute(
           builder: (context) => Home(),
       ));
-       */
+
     }catch (e) {
       print(e.toString());
     }

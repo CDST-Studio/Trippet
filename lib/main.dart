@@ -3,7 +3,7 @@ import 'package:kakao_flutter_sdk/all.dart';
 
 void main() {
   KakaoContext.clientId = "26a4f0b7a791e339f773c42e9de5fc0f";
-  KakaoContext.javascriptClientId = "29507a126b5fef23a99cd5dca4228d90";
+  KakaoContext.javascriptClientId = "26a4f0b7a791e339f773c42e9de5fc0f";
   runApp(MyApp());
 }
 
@@ -68,12 +68,12 @@ class _KakaoLoginState extends State<KakaoLogin> {
       AccessTokenStore.instance.toStore(token);
       print("token = " + token.toString());
 
-
-      Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Home(),
-      ));
-
-    }catch (e) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home(),
+          ));
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -82,7 +82,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
     try {
       var code = await AuthCodeClient.instance.request();
       await _issueAccessToken(code);
-    }catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -91,7 +91,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
     try {
       var code = await AuthCodeClient.instance.requestWithTalk();
       await _issueAccessToken(code);
-    }catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -104,26 +104,26 @@ class _KakaoLoginState extends State<KakaoLogin> {
       ),
       body: Center(
         child: InkWell(
-          onTap: () => _isKakaoTalkInstalled ? _loginWithTalk() : _loginWithKakao(),
+          onTap: () =>
+              _isKakaoTalkInstalled ? _loginWithTalk() : _loginWithKakao(),
           child: Container(
             width: MediaQuery.of(context).size.width * 0.6,
             height: MediaQuery.of(context).size.height * 0.07,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.yellow
-            ),
-            child: Row (
+                borderRadius: BorderRadius.circular(10), color: Colors.yellow),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.chat_bubble, color: Colors.black54),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
                   "카카오계정 로그인",
                   style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.w900,
-                      fontSize: 20
-                  ),
+                      fontSize: 20),
                 )
               ],
             ),
